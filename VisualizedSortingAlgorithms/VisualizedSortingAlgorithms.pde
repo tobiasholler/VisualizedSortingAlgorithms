@@ -17,6 +17,10 @@ void ani() {
     delay(1000);
     shuffle();
     delay(1000);
+    selectionSort();
+    delay(1000);
+    shuffle();
+    delay(1000);
     quickSort();
     delay(1000);
     shuffle();
@@ -39,6 +43,7 @@ void shuffle() {
 }
 
 void sw(int i, int j) {
+  if (i == j) return;
   int t = arr[i];
   arr[i] = arr[j];
   arr[j] = t;
@@ -60,6 +65,20 @@ void bubbleSort() {
     }
     delay(5);
   } while (!isSorted);
+  currentSortName = "";
+}
+
+void selectionSort() {
+  currentSortName = "Selection Sort";
+  int minIndex = 0;
+  for (int i = 0; i < arr.length; i++) {
+    minIndex = -1;
+    for (int j = i; j < arr.length; j++) {
+      if (minIndex < 0 || arr[j] <= arr[minIndex]) minIndex = j;
+    }
+    delay(3);
+    sw(i, minIndex);
+  }
   currentSortName = "";
 }
 
